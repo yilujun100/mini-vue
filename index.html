@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mini版Vue</title>
+    <script src="./compiler.js"></script>
+    <script src="./MVue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <p v-text="foo.bar"></p>
+        <input type="text" v-model="message">
+        <button @click="handleClick">Click me</button>
+        <div v-html="html"></div>
+    </div>
+    <script>
+    const vm = new MVue({
+        el: '#app',
+        data: {
+            message: 'hello world',
+            name: 'yilujun',
+            foo: {
+                bar: 'test'
+            },
+            html: '<button>这是一个按钮</button>'
+        },
+        created() {
+            setTimeout(() => {
+                this.message = 'Hello Vue!';
+            }, 1500);
+        },
+        methods: {
+            handleClick() {
+                alert('按钮被点击了');
+            }
+        }
+    });
+    </script>
+</body>
+</html>
